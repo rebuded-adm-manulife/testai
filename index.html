@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline Tiny LLM Reworder (Option B)</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Offline Tiny LLM Reworder</h1>
+      <p class="subtitle">Runs fully client-side. No external AI API calls. Requires locally bundled model + runtime files.</p>
+    </header>
+
+    <section class="card">
+      <label for="input">Input</label>
+      <textarea id="input" rows="4" placeholder="Type a sentence to reword..."></textarea>
+
+      <div class="row">
+        <div class="field">
+          <label for="style">Style</label>
+          <select id="style">
+            <option value="professional" selected>Professional</option>
+            <option value="concise">Concise</option>
+            <option value="friendly">Friendly</option>
+            <option value="formal">Formal</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Model</label>
+          <div class="muted">Bundled: GPT-2 Small (ONNX/WASM)</div>
+          <small class="muted">Put model files under <code>/model</code> as described in README.</small>
+        </div>
+      </div>
+
+      <div class="row actions">
+        <button id="btnInit" type="button">Initialize Model</button>
+        <button id="btnReword" type="button" disabled>Reword</button>
+        <button id="btnClear" type="button" class="secondary">Clear</button>
+      </div>
+
+      <div class="progress">
+        <div class="progress-label" id="progressLabel">Not initialized</div>
+        <div class="bar"><div class="fill" id="progressFill"></div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row" style="align-items:flex-end">
+        <div style="flex:1">
+          <label for="output">Reworded Output</label>
+          <textarea id="output" rows="6" placeholder="Output appears here..." readonly></textarea>
+        </div>
+        <button id="btnCopy" class="secondary" type="button">Copy</button>
+      </div>
+      <p class="muted" id="status"></p>
+    </section>
+
+    <footer>
+      <small class="muted">If initialization fails, it usually means required files in <code>/vendor</code> or <code>/model</code> are missing. See README.</small>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

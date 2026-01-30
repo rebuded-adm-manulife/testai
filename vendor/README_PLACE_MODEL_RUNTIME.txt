@@ -1,0 +1,1 @@
+Place Transformers.js UMD bundle as vendor/transformers.min.js and ONNX runtime wasm files under vendor/ort-wasm/. See README.md
