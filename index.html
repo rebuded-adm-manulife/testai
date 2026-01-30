@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local AI Reworder (Browser LLM)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Local AI Reworder</h1>
+      <p class="subtitle">Runs in your browser. No external AI API calls. First use downloads model files.</p>
+    </header>
+
+    <section class="card">
+      <label for="input">Input</label>
+      <textarea id="input" rows="4" placeholder="Type a sentence to reword..."></textarea>
+
+      <div class="row">
+        <div class="field">
+          <label for="style">Style</label>
+          <select id="style">
+            <option value="professional" selected>Professional</option>
+            <option value="concise">Concise</option>
+            <option value="friendly">Friendly</option>
+            <option value="formal">Formal</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="model">Model</label>
+          <select id="model"></select>
+          <small class="muted">Choose a smaller model for faster first load.</small>
+        </div>
+      </div>
+
+      <div class="row actions">
+        <button id="btnLoad" type="button">Load Model</button>
+        <button id="btnReword" type="button" disabled>Reword</button>
+        <button id="btnClear" type="button" class="secondary">Clear</button>
+      </div>
+
+      <div class="progress">
+        <div class="progress-label" id="progressLabel">Model not loaded</div>
+        <div class="bar"><div class="fill" id="progressFill"></div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row" style="align-items:flex-end">
+        <div style="flex:1">
+          <label for="output">Reworded Output</label>
+          <textarea id="output" rows="6" placeholder="Output appears here..." readonly></textarea>
+        </div>
+        <button id="btnCopy" class="secondary" type="button">Copy</button>
+      </div>
+      <p class="muted" id="status"></p>
+    </section>
+
+    <footer>
+      <small class="muted">If you see errors, open DevTools (F12) → Console/Network for blocked downloads.</small>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
